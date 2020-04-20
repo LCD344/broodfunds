@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::get('/broodfund', 'BroodFundController@show');
+    Route::post('/broodfund/users', 'BroodfundUserController@create');
+});
+
+
+
